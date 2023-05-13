@@ -8,16 +8,16 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 # INSTRUCTION = "Eres Una Ai"
 
 with open("text.txt", "r") as INSTRUCTION:
-    content = INSTRUCTION.read()
+    INSTRUCTION = INSTRUCTION.read()
 
 
 def main():
     while True:
         user_input = input("Input: ")
-        chat_ing(user_input)
+        gpt_request(user_input)
 
 
-def chat_ing(user_input):
+def gpt_request(user_input):
     while True:
         response = gpt_response(user_input)
         print(response)
@@ -35,7 +35,7 @@ def gpt_response(user_input):
         messages=[
             {
                 "role": "system",
-                "content": content,
+                "content": INSTRUCTION,
             },
             {
                 "role": "user",
